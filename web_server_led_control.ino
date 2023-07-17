@@ -2,7 +2,7 @@
 #include <WebServer.h>
 
 const char* ssid = "SSTE";
-const char* password = "010A081B0C";
+const char* password = "password";
 
 const int output26 = 26; // gpio 26
 const int output27 = 27; // gpio 27
