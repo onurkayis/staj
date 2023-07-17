@@ -10,7 +10,7 @@
 
 
 const char* ssid = "SSTE";
-const char* password = "010A081B0C";
+const char* password = "password";
 
 WebServer server(80);
 
