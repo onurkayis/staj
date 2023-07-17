@@ -1,7 +1,7 @@
 #include <WiFi.h>
 
 const char* ssid = "SSTE";
-const char* password = "010A081B0C";
+const char* password = "password";
 
 void initWifi(){
   Serial.print("İnternete bağlanılıyor");
