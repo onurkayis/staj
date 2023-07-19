@@ -19,11 +19,11 @@ void loop() {
   // put your main code here, to run repeatedly:
   for(int dutyCycle = 0; dutyCycle <= 255; dutyCycle++){
     ledcWrite(ledChannel, dutyCycle);
-    delay(15);
+    delay(25);
   }
   for(int dutyCycle = 255; dutyCycle >= 0; dutyCycle--){
     ledcWrite(ledChannel, dutyCycle);
-    delay(15);
+    delay(25);
   }
 
 }
