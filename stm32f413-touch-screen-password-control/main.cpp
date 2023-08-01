@@ -71,10 +71,6 @@ void mainScreen(){
         BSP_LCD_DisplayStringAt(30, 197, (uint8_t *)"->", RIGHT_MODE);
 }
 
-int pageNum = 1;
-int password;
-int pass = 1234;
-
 int main()
 {
     uint16_t x1, y1;
@@ -87,6 +83,9 @@ int main()
     }    
 
     mainScreen();
+    int pageNum = 1;
+    int password = 0;
+    int pass = 1234;
     int i = 0;
     int c = 3;
 
@@ -102,7 +101,7 @@ int main()
 
             BSP_LCD_SetTextColor(LCD_COLOR_WHITE);
             BSP_LCD_FillCircle(x1, y1, 5);
-            
+
             if(pageNum == 1){
                 mainScreen();
                 if(x1 > 35 && x1 < 70 && y1 > 70 && y1 < 100){
@@ -202,7 +201,7 @@ int main()
                     pageNum = 2;
                 }
             }
-            if(pageNum == 2 ){
+            if(pageNum == 2){
                 BSP_LCD_SetFont(&Font20);
                 BSP_LCD_Clear(LCD_COLOR_BLACK);
                 BSP_LCD_SetBackColor(LCD_COLOR_GREEN);
@@ -222,12 +221,12 @@ int main()
                 BSP_LCD_SetBackColor(LCD_COLOR_RED);
                 BSP_LCD_SetFont(&Font20);
                 BSP_LCD_DisplayStringAt(0, 142, (uint8_t *)"<-", CENTER_MODE);   
-            }if(x1 > 100 && x1 < 140 && y1 > 130 && y1 < 175){
-                pageNum = 1;
                 password = 0;
                 c = 3;
             }
-   
+            if(x1 > 100 && x1 < 140 && y1 > 130 && y1 < 175){
+                pageNum = 1;
+            }
         }
     }
 }
