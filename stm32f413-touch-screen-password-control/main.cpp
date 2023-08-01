@@ -215,14 +215,14 @@ int main()
                     BSP_LCD_DisplayStringAt(0, 100, (uint8_t *)"Tekrar Deneyin!", CENTER_MODE);
                     printf("Password: %d", password);
                 }
+                password = 0;
+                c = 3;
                 BSP_LCD_SetTextColor(LCD_COLOR_RED);
                 BSP_LCD_FillCircle(120, 150, 20);
                 BSP_LCD_SetTextColor(LCD_COLOR_WHITE);
                 BSP_LCD_SetBackColor(LCD_COLOR_RED);
                 BSP_LCD_SetFont(&Font20);
                 BSP_LCD_DisplayStringAt(0, 142, (uint8_t *)"<-", CENTER_MODE);   
-                password = 0;
-                c = 3;
             }
             if(x1 > 100 && x1 < 140 && y1 > 130 && y1 < 175){
                 pageNum = 1;
