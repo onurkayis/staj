@@ -96,10 +96,7 @@ int main()
             }else{
                 BSP_LCD_DisplayStringAt(150, 110, (uint8_t *)saniye_ptr, LEFT_MODE);
             }
-        }
-
-        BSP_LCD_SetFont(&Font16);
-        BSP_LCD_DisplayStringAt(0, 200, (uint8_t *)"Kaydet", CENTER_MODE);
+        }        
 
        if(pageNum == 2 ){
             BSP_LCD_SetFont(&Font24);
@@ -108,6 +105,8 @@ int main()
             BSP_LCD_SetFont(&Font20);
             BSP_LCD_DisplayStringAt(60,  150, (uint8_t *)"v", LEFT_MODE);
             BSP_LCD_DisplayStringAt(110,  150, (uint8_t *)"v", LEFT_MODE);
+            BSP_LCD_SetFont(&Font16);
+            BSP_LCD_DisplayStringAt(0, 200, (uint8_t *)"Kaydet", CENTER_MODE);
         }
         if(saniye == 60){
             BSP_LCD_Clear(LCD_COLOR_WHITE);
