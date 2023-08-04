@@ -4,9 +4,11 @@
 #include "stm32f413h_discovery_lcd.h"
 #include <cstdio>
 #include <cmath>
+#include "stm32f4xx_hal_flash.h"
 using namespace std;
 
 TS_StateTypeDef  TS_State = {0};
+bool pscheck = false; 
 
 void mainScreen(){
     /* Clear the LCD */
@@ -91,7 +93,7 @@ int main()
 
     while (1) {
         BSP_TS_GetState(&TS_State);
-        printf("PageNum: %d\n",pageNum);
+        //printf("PageNum: %d\n",pageNum);
         for( i=0;i<900000;i++){}
         if(TS_State.touchDetected) {
             /* Get X and Y position of the first touch post calibrated */
@@ -197,7 +199,6 @@ int main()
                     printf("Password: %d", password);
                 }else if(x1 > 170 && x1 < 210 && y1 > 180 && y1 < 225){
                     printf("ENTER\t");
-                    BSP_LCD_Clear(LCD_COLOR_BLACK);
                     pageNum = 2;
                 }
             }
@@ -206,14 +207,15 @@ int main()
                 BSP_LCD_Clear(LCD_COLOR_BLACK);
                 BSP_LCD_SetBackColor(LCD_COLOR_GREEN);
                 BSP_LCD_SetTextColor(LCD_COLOR_BLACK);
-                if(pass == password){
-                    BSP_LCD_DisplayStringAt(0, 100, (uint8_t *)"Sifre Dogru!", CENTER_MODE);
-                    printf("Password: %d", password);
-                }else{
+                if((password != pass) && (pscheck==false)){  
                     BSP_LCD_SetTextColor(LCD_COLOR_BLACK);
                     BSP_LCD_SetBackColor(LCD_COLOR_RED);
                     BSP_LCD_DisplayStringAt(0, 100, (uint8_t *)"Tekrar Deneyin!", CENTER_MODE);
                     printf("Password: %d", password);
+                }else{
+                    BSP_LCD_DisplayStringAt(0, 100, (uint8_t *)"Sifre Dogru!", CENTER_MODE);
+                    printf("Password: %d", password);
+                    pscheck = true;
                 }
                 password = 0;
                 c = 3;
@@ -226,6 +228,7 @@ int main()
             }
             if(x1 > 100 && x1 < 140 && y1 > 130 && y1 < 175){
                 pageNum = 1;
+                pscheck=false;
             }
         }
     }
